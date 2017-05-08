@@ -1,0 +1,416 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:11px;
+  height:100%;
+  margin: 0;
+  padding: 0;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+#container{
+  z-index: 2;
+  height: calc(100vh);
+  background: url(../images/cell.png) repeat;
+  overflow:hidden;
+}
+.gridContainer{
+    width: 1000px;
+    position: relative;
+    height: 600px;
+    border-collapse: collapse;
+    top: 50%;
+    margin-top: -300px;
+}
+.tableContainer{
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.tableContainer table{
+    width: 48%;
+    height: calc(33.5vw);
+    float: right;
+    border-spacing: inherit;
+    border-collapse: collapse;
+}
+.tableContainer table.player{
+    float: left;
+}
+.btn{
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid;
+    border-radius: 15px;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 30px;
+    float: left;
+    font-size: 19px;
+    font-weight: 600;
+    background: white;
+    cursor: pointer;
+}
+.autofix{
+    position: absolute;
+    /* bottom: 127px; */
+    margin: 0;
+    left: 15px;
+    font-size: 12px;
+    top: 676px;
+}
+.tableContainer table td{
+    position: relative;
+    border: 1px solid;
+}
+.tableContainer table td img{
+    width: 400%;
+    height: 400%;
+    position: absolute;
+    left: -600px;
+    top:-600px;
+    opacity: 0;
+    animation-name: aim;
+    animation-delay: 0.3s;
+    animation-duration: 1.2s;
+    animation-timing-function:  ease-in;
+}
+.winnerDeclaration{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+.winnerDeclaration div{
+    position: absolute;
+    top: 40%;
+    font-size: 94px;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    z-index: 10;
+    -webkit-text-stroke: 1px black;
+}
+@keyframes aim {
+    5%   {opacity: 1;}
+    80% {
+        left: 0;
+        top:0;
+        width: 80%;
+        height: 80%;
+    }
+    100% {
+        left: 0;
+        top:0;
+        width: 80%;
+        height: 80%;
+        opacity: 1;
+    }
+}
+td{
+    background: rgb(255, 255, 255);
+}
+.player td.blocked,.isOn .player td.blocked.killed,.isOn .player td.splash,.isOn .player td.blocked.splash {
+    background: rgb(210, 210, 210);
+}
+.player td.blocked.occupied,.isOn .player  td.blocked.occupied{
+    background:  rgb(31, 126, 255);
+}
+.player td.blocked.occupied.chosen{
+    background: rgb(180, 255, 109);
+}
+.isOn .player td.blocked{
+    background: rgb(255,255,255);
+}
+.isOn .player  td.blocked.occupied.damaged.splash{
+    background: rgb(149, 6, 0);
+}
+
+.ai  td.occupied{
+    background:  rgb(31, 126, 255);
+}
+.ai  td.splash{
+    background: rgb(210, 210, 210);
+}
+.ai  td.splash.damaged {
+    background: rgb(149, 6, 0);
+}
+.ai  td.killed {
+    background: rgb(210, 210, 210);
+}
+td.occupied.blocked.invalid{
+    background: red!important;
+}
+/*td.occupied.blocked.damaged{*/
+    /*background: rgb(149, 6, 0);*/
+    /*background: rgb(0, 255, 104);*/
+    /*background: rgb(255, 4, 0);*/
+/*}*/
+.tableWrap{
+    display: table-cell;
+    vertical-align: middle;
+}
+aside,h5{
+    font-size: 19px;
+    font-weight: 600;
+    width: 56px;
+    text-align: center;
+    float: left;
+    clear: both;
+}
+aside h5{
+    font-size: 19px;
+    font-weight: 600;
+    width: 54px;
+    text-align: center;
+    float: left;
+    clear: both;
+    margin: 0!important;
+    padding-top: 12px;
+}
+h5{
+  margin: 0;
+  margin-bottom:11px ;
+}
+table.ai{
+    opacity: 0.3;
+}
+.isOn table.ai{
+    opacity:1;
+}
+.gameStarted table.ai{
+    opacity: 1;
+}
+.tableWrap h1{
+    display: block;
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+header{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    z-index: 11;
+}
+.expBtns{
+  padding: 20px 15px;
+  width: 400px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+header h1{
+    float: right;
+    margin: 0;
+    height: 42px;
+    padding-right: 50px;
+    line-height: 50px;
+    font-size: 35px;
+}
+.expBtns .btn{
+  float: right;
+  margin-right: 30px;
+  margin-left: 0;
+}
+aside{
+  width: 55px;
+  height: 190px;
+  position: absolute;
+  left: 50px;
+  top: 120px;
+}
+.colorRow{
+  float: left;
+  clear: both;
+  width: 100%;
+  line-height: 39px;
+  cursor: pointer;
+}
+.colorSample{
+  margin-left: 7px ;
+  width: 38px;
+  height: 38px;
+  float: left;
+  clear: both;
+  border: 1px solid;
+  border-bottom:0 ;
+  margin-right: 8px;
+  background: rgb(255,255,255);
+  transition: background ease-out 0.2s;
+}
+.colorRow:last-child .colorSample{
+  border-bottom: 1px solid;
+}
+.colorRow.red:hover .colorSample,.colorRow.red.active .colorSample{
+  background: red;
+}
+.colorRow.red:hover{
+  color: red;
+}
+.colorRow.green:hover .colorSample,.colorRow.green.active .colorSample{
+  background: green;
+}
+.colorRow.green:hover{
+  color: green;
+}
+.colorRow.blue:hover .colorSample,.colorRow.blue.active .colorSample{
+  background: blue;
+}
+.colorRow.blue:hover{
+  color: blue;
+}
+.colorRow.black:hover .colorSample,.colorRow.black.active .colorSample{
+  background: black;
+}
+.colorRow.black:hover{
+  color: black;
+}
+.floatingSamle{
+  width: 38px;
+  height: 38px;
+  position: fixed;
+}
+.textHolder{
+  display: block;
+  height: 400px;
+  width: 200px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  left: initial;
+  padding: 10px;
+  margin-top: -200px;
+}
+.hiden{
+  display: none;
+}
+.textHolder textarea{
+  resize: none;
+  height: 90%;
+  width: 100%;
+  display: inline-block;
+  float: right;
+  clear: both;
+}
+.rotate{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    cursor: pointer;
+    background-image: url("../images/rotate.png");
+}
+.rotate img{
+    width: 100%;
+    height: 100%;
+}
+.modal{
+    width: calc(50vw);
+    height: calc(60vh);
+    position: absolute;
+    top: calc(20vh);
+    left: calc(25vw);
+    background: white;
+    border: 1px solid;
+}
+.overlay{
+    z-index: 12;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
+    background: rgba(0,0,0,.3);
+}
+.modal h1{
+    width: 100%;
+    background: dodgerblue;
+    color: white;
+    /* text-align: center; */
+    padding-left: 10px;
+    margin: 0;
+    box-sizing: border-box;
+}
+.modal .close{
+    float: right;
+    padding: 0 17px;
+    cursor: pointer;
+}
+.save.item.active{
+    background: #74f3ff;
+}
+.save.item{
+    border: 1px solid black;
+    border-radius: 12px;
+    width: 95%;
+    margin: 5px auto;
+    cursor: pointer;
+    height: 32px;
+    display: table;
+}
+.save.item .wrap{
+    display: table-row;
+}
+.save.item .wrap div{
+    display: table-cell;
+    vertical-align: middle;
+}
+.save.item .date{
+    font-size: 19px;
+    padding: 5px;
+    width: 170px;
+}
+.save.item .getCode{
+    width: 25px;
+    text-align: center;
+}
+
+.save.item input{
+    width: 100%;
+}
+.modalBody{
+    height: calc(35vh);
+    overflow: auto;
+}
+.textExport{
+    height: calc(15vh);
+}
+.modalFooter .btn{
+    float: right;
+    margin: 0 15px;
+}
+.modalFooter .btn.import{
+    float: left;
+}
+textarea{
+    width: 80%;
+    height: 230px;
+    z-index: auto;
+    resize: none;
+    margin: 30px auto;
+    display: block;
+    position: relative;
+    line-height: normal;
+    font-size: 13.3333px;
+    transition: none;
+    background: transparent !important;
+}
+.textExport textarea{
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    z-index: auto;
+    position: relative;
+    line-height: normal;
+}
+.hide{
+    display: none;
+}
