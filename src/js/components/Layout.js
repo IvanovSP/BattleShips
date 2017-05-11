@@ -55,9 +55,9 @@ export default class Layout extends GameControl{
 		var battleShips;
 		try {battleShips=JSON.parse(localStorage.getItem('battleShips'));}
 		catch (e) {battleShips=[]}
-		var save ={}
-		
-		save[key]=savePackage;
+		var save ={};
+		save[key]=savePackage;		
+		if(!battleShips)battleShips=[];
 		battleShips.push(save)
 		localStorage.setItem('battleShips',JSON.stringify(battleShips));
 		alert('Информация сохранена')
